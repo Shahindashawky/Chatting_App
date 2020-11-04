@@ -1,0 +1,40 @@
+<div class="mainContent">
+    <svg (click)="backClicked()"  width="2em" height="2em" viewBox="0 190 16 16" class="bi bi-box-arrow-in-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+        <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+      </svg>
+    <div class="userListWrapper">
+        <app-user-list></app-user-list>
+    </div>
+    <div  #scroller class="feedWrapper">
+        <!-- <app-feed></app-feed> -->
+        <div class="message" *ngFor="let chat of chats" >
+            <div *ngIf="chat.roomname == roomname">
+            <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
+                <span class="chat-date" >{{chat.date}}</span>&nbsp;
+                <span class="chat-content-center">{{chat.message}}</span>
+            </div>
+            <ng-template #message>
+                <div class="chat-message">
+                    <div class="messageContainer" [ngClass]="{'isOwnMessageContainer':chat.email === ownEmail}">
+                    <div class="messageData">
+                    <span class="msg-name" [ngClass]="{'isOwnSender':chat.email === ownEmail}" *ngIf="chat.email === ownEmail">Me</span>
+                    <span class="sender" [ngClass]="{'isOwnSender':chat.email === ownEmail}" *ngIf="chat.email !== ownEmail">{{chat.userName}}</span>
+                    <span class="timestamp" [ngClass] = "{'isOwnTimestamp':chat.email === ownEmail}"> at {{chat.date}}</span>
+                </div>
+                    <div class="messageContent"
+                    [ngClass]="{'isOwnMessageContent':chat.email === ownEmail}">{{chat.message}}</div>
+                    </div>
+                </div>
+              </ng-template>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="chatFormWrapper">
+           <form class="message-form" [formGroup]="chatForm" (ngSubmit)="onFormSubmit(chatForm.value)">
+            <input  placeholder="Enter message here" class="chatInput" formControlName="message">
+
+            <button class="chatbutton" type="submit" >send</button>
+        </form>
+</div>

@@ -1,0 +1,31 @@
+<div class="navBar">
+
+    <div id="heading"><a routerLink="/">chat</a></div>
+    <div class="row" style="margin-right: 150px; margin-top: 10px;" >
+      <form class="example-form" [formGroup]="roomForm" (ngSubmit)="onFormSubmit(roomForm.value)">
+        <button type="submit" style="background-color: transparent; display: inline-flex;"  mat-fab ><svg  viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg></button>
+          <input placeholder="please enter room name"  formControlName="roomname" style="background-color: transparent;height: 30px; "  >
+    </form>
+    </div>
+  <div class="links">
+
+    <span>
+      <a *ngIf="!(user|async)?.uid" routerLink="/login" >Login</a>
+    </span>
+    <span>
+      <a *ngIf="!(user|async)?.uid" routerLink="/signup">Sign Up</a>
+    </span>
+    <span>
+      <span id="userEmail" *ngIf="(user|async)?.uid">Hello, {{userName}}</span>
+    </span>
+    <span>
+      <a *ngIf="(user|async)?.uid" href="#" (click)="logout()">Logout</a>
+    </span>
+  </div>
+ 
+</div>
+
+

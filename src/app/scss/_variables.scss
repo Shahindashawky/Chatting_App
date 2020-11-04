@@ -1,0 +1,45 @@
+@import "./mixins";
+// Color
+$mainColor1:#FC7977;
+$mainColor2:#2AAAB1;
+$secondryColor1:#1C1E1C;
+$secondryColor2:#0288BE;
+$secondryColor3:#DE36B5;
+$warningColor:#FC7977;
+$successfulColor:#2AAAB1;
+$lightcolor:#FFFFFF;
+$lightGray:#f7f5f5;
+$gray:#f9f8f8;
+$greyColor:#9c9c9c;
+$gray-dark:#666;
+$default:#F0EFEF;
+//float
+$float-left:left;
+$float-right:right;
+//text
+$text-left:left;
+$text-right:right;
+//Font-size
+$mainFont:16px;
+$headFont:30px;
+//Font-weight
+$boldWeight:700;
+$mainWeight5:500;
+//padding
+$mainPadding:20px;
+//border radius
+$borderRadius:5px;
+//class
+.position_absolute{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+}
+//media
+$maxWidth:'(max-width: 350px)';
+$minSmall:'(max-width: 576px)';
+$maxSmall:'(max-width: 991px)';
+$minMeduim:'(min-width: 992px)';
+$minLarge:'(min-width: 1200px)';
+

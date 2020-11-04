@@ -1,0 +1,14 @@
+
+
+<div class="userList">
+
+    <app-user-item
+    
+    [user]=user *ngFor="let user of users" (click)="enterprivateRoom(user.email)"> 
+    
+    </app-user-item>
+    <div class="userItem" *ngFor="let x of rooms " (click)="enterChatRoom(x.roomname)">
+      {{x?.roomname}}
+    </div>
+  </div>
+

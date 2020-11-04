@@ -1,0 +1,130 @@
+
+//background rgba
+ @mixin bK($c1,$c2,$c3,$p){
+     background-color:rgba($c1,$c2,$c3,$p) !important;
+ }
+
+//border
+@mixin border($w,$s,$c){
+    border:$w $s $c;
+}
+@mixin border-b($w,$s,$c){
+    border-bottom:$w $s $c;
+}
+@mixin border-t($w,$s,$c){
+    border-top:$w $s $c;
+}
+@mixin border-r($w,$s,$c){
+    border-right:$w $s $c;
+}
+@mixin border-l($w,$s,$c){
+    border-left:$w $s $c;
+}
+
+// box shadow
+@mixin shadow($a,$b,$d,$c){
+box-shadow:$a $b $d $c;
+}
+
+// transition
+@mixin transition($a,$b,$d){
+    transition: $a $b $d ;
+    }
+
+
+//overlay
+@mixin overLay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+//prefixer
+@mixin prefixer($property,$value,$prefixes:()){
+    @each $prefix in $prefixes{
+        #{'-'+$prefix+'-'+$property}:$value;
+    }
+    #{$property}:$value;
+}
+
+//animation
+@mixin keyFrame($animation_name){
+    @-webkit-keyframes #{$animation_name}{
+       @content;
+    }
+    @-moz-keyframes #{$animation_name}{
+        @content;
+    }
+    @-o-keyframes #{$animation_name}{
+        @content;
+    }
+    @keyframes #{$animation_name}{
+        @content;
+    }
+}
+// grid
+*{
+    @include prefixer(box-sizing,border-box,moz webkit)
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 540px and up) */
+@mixin Small {
+    @media only screen and(max-width: 576px){
+        @content;
+    }
+}
+/* Medium devices (landscape tablets, 720px and up) */
+@mixin medium {
+    @media only screen and (max-width:768px){
+        @content; 
+    }
+}
+@mixin medium-min {
+    @media only screen and (min-width:768px){
+        @content; 
+    }
+}
+/* Large devices (laptops/desktops, 960px and up) */
+@mixin large {
+    @media only screen and (max-width: 992px)  { //max
+        @content;
+    }
+}
+@mixin large-min {
+    @media only screen and (min-width: 992px)  { //max
+        @content;
+    }
+}
+@mixin exLarge{
+    @media only screen and(max-width: 1200px){
+        @content;
+    }
+}
+/* Extra large devices (large laptops and desktops, 1140px and up) */
+@mixin extraLarge{
+    @media only screen and(min-width: 1200px){
+        @content;
+    }
+}
+
+.container{
+    padding-left:15px;
+    padding-right:15px;
+    margin:auto;
+    position:relative;
+    // @media #{$minSmall}{
+    //     width:750px;
+    // }
+    // @media #{$minMeduim}{
+    //     width:950px;
+    // }
+    // @media #{$minLarge}{
+    //     width:1170px;
+    // }
+}
+.clearfix{
+    clear:both;
+}
